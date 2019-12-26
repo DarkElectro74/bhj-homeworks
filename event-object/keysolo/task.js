@@ -24,7 +24,23 @@ class Game {
       В случае правильного ввода слова вызываем this.success()
       При неправильном вводе символа - this.fail();
      */
+	let index = 0;
+	const that = this;
+    document.onkeypress = function(event) {
+      const symbol = document.body.querySelectorAll(".symbol");
+      let arr = Array.from(symbol);
+      if (arr[index].textContent == event.key.toLowerCase()) {
+        index += 1;
+        that.success();
+        if (index  == (arr.length)){
+          index = 0;
+        }
+      } else {
+        that.fail()
+      }
+    }
   }
+
 
   success() {
     this.currentSymbol.classList.add('symbol_correct');
@@ -87,4 +103,3 @@ class Game {
 }
 
 new Game(document.getElementById('game'))
-
