@@ -10,13 +10,12 @@ chatWidgetInput.onkeypress = function (e) {
         const timme = new Date();
         const messageCustomer = chatWidgetInput.value;
         const messageRobot = [
-            'Кто тут?',
-            'Где ваша совесть?',
-            'К сожалению  все операторы сейчас заняты! Не пишите нам больше!',
-            'Вы не купили не одного товара, что б так с нами разговаривать!',
-            'Добрый день! До свидания!',
-            'Мы нечего не будем вам продавать!',
-            'Где ваша совесть?',
+            'Good morning',
+			'Hello!',
+			'We wont sell you anything!',
+			'Goodbye!',
+			'I cant hear you! Pshhh pshhh.'
+			
         ],
             index = Math.floor(Math.random() * messageRobot.length);
         if (messageCustomer != '') {
