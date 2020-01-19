@@ -1,18 +1,16 @@
-let form = document.getElementById("form");
-let progress = document.getElementById("progress");
+const progress = document.getElementById( 'progress' );
+const send = document.getElementById('send');
+const formData = new FormData(form);
+const xhr = new XMLHttpRequest();
 
-form.addEventListener('submit', () => {
-    var formData = new FormData(form);
+send.addEventListener('click', showProgress);
+function showProgress(event) {
+    event.preventDefault();
+    xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php');
+    xhr.onprogress = function (event) {
 
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://netology-slow-rest.herokuapp.com/upload.php');
+        progress.value = event.loaded / 1000000;
+    }
     xhr.send(formData);
 
-    xhr.upload.onprogress = function() {
-        alert( 'Загружено на сервер');
-    }
-
-    xhr.upload.onprogress = function(event) {
-        console.log(event);
-    }
-})
+}
